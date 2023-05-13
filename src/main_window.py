@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QTextEdit, QLabel, QComboBox
 from PyQt5.QtGui import QFont, QScreen
 from PyQt5.QtCore import Qt
-from settings import SettingsMenu
-from readability_index import READABILITY_INDICES
+from .settings.settings_menu import SettingsMenu
+from .readability_index import READABILITY_INDICES
 
 
 class MainWindow(QMainWindow):
@@ -87,10 +87,3 @@ class MainWindow(QMainWindow):
             result_text += f"\nAdditional Score (e.g., Reading Ease for Flesch-Kincaid): {additional_score:.2f}"
 
         self.result_label.setText(result_text)
-
-
-if __name__ == '__main__':
-    app = QApplication([])
-    window = MainWindow()
-    window.show()
-    app.exec_()

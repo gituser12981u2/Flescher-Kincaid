@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QMenu, QAction
-from settings_window import SettingsWindow
-from user_settings import UserSettings
+from .user_settings import UserSettings
+from .settings_window import SettingsWindow
 
 
 class SettingsMenu(QMenu):

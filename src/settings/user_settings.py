@@ -46,7 +46,7 @@ class UserSettings:
         current_font = QFont()
         current_font.fromString(self.settings['font'])
         font.setPointSize(current_font.pointSize())
-        
+
         self.settings['font'] = font.toString()
         self.save_settings()
         self.apply_font()
@@ -80,10 +80,10 @@ class UserSettings:
 
     def load_stylesheet(self):
         if self.settings['mode'] == 'light':
-            with open('light.qss', 'r') as f:
+            with open('src/styles/light.qss', 'r') as f:
                 stylesheet = f.read()
         else:
-            with open('dark.qss', 'r') as f:
+            with open('src/styles/dark.qss', 'r') as f:
                 stylesheet = f.read()
         qApp.setStyleSheet(stylesheet)
 

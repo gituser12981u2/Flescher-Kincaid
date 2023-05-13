@@ -47,7 +47,7 @@ class SettingsWindow(QDialog):
         layout.addWidget(self.font_checkbox)
 
     def toggle_application_font(self, state):
-        self.settings.settings['change_application_font'] = state == Qt.Checked
+        # self.settings.settings['change_application_font'] = state == Qt.Checked
         if state == Qt.Checked:  # type: ignore
             self.settings.settings['change_application_font'] = True
         else:
