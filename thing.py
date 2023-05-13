@@ -3,14 +3,16 @@ from Flesch_Kincaid import calculate_flesch_scores
 
 def print_flesch_scores(text1, text2):
     # Calculate scores for TTTC Intro
-    fk_grade1, fre_score1 = calculate_flesch_scores(text1)
+    index = 'yes'
+    fk_grade1, fre_score1 = calculate_flesch_scores(text1, index)
     print("Scores for TTTC Intro:")
     print(f"Flesch-Kincaid Grade Level: {fk_grade1}")
     print(f"Flesch Reading Ease: {fre_score1}")
     print("")
 
     # Calculate scores for Ulysses 'Proteus'
-    fk_grade2, fre_score2 = calculate_flesch_scores(text2)
+    index = 'yes'
+    fk_grade2, fre_score2 = calculate_flesch_scores(text2, index)
     print("Scores for Ulysses 'Proteus':")
     print(f"Flesch-Kincaid Grade Level: {fk_grade2}")
     print(f"Flesch Reading Ease: {fre_score2}")
