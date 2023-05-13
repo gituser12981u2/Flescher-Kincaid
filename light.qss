@@ -1,0 +1,58 @@
+QMainWindow {
+    background-color: #fafafa;
+}
+
+QTextEdit {
+    border: 1px solid #888;
+}
+
+QComboBox {
+    border: 1px solid #888;
+}
+
+QLabel {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+QPushButton {
+    background-color: #007BFF;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 20px;
+}
+
+QPushButton:hover {
+    background-color: #0056b3;
+}
+
+QPushButton:pressed {
+    background-color: #003d80;
+}
+
+QMenuBar {
+    background-color: #fafafa;
+    color: #000;
+}
+
+QMenu {
+    background-color: #fafafa;
+    color: #000;
+}
+
+QMenu::item:selected {
+    background-color: #ccc;
+}
+
+QDialog {
+    background-color: #fafafa;
+}
+
+QLabel {
+    color: #000;
+}
+
+QFontComboBox {
+    border: 1px solid #888;
+}

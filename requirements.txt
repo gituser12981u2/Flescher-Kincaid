@@ -3,3 +3,4 @@ textstat==0.7.3
 en_core_web_sm>=3.0.0
 matplotlib==1.16.0
 pyqt5==5.15.2
+darkdetect==0.8.0

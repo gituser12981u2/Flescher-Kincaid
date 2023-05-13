@@ -46,7 +46,7 @@ class MainWindow(QMainWindow):
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
 
-        self.layout = QVBoxLayout()
+        self.layout = QVBoxLayout()  # type: ignore
         self.layout.setContentsMargins(50, 50, 50, 50)
         self.central_widget.setLayout(self.layout)
 
