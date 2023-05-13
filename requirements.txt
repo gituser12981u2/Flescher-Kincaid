@@ -1,0 +1,4 @@
+spacy>=3.5.2,<3.6.0
+textstat==0.7.3
+en_core_web_sm>=3.0.0
+matplotlib==1.16.0
