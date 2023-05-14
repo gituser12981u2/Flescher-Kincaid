@@ -1,20 +1,23 @@
 from PyQt5.QtWidgets import QMenu, QAction
-from .user_settings import UserSettings
+from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtGui import QCursor
+
 from .settings_window import SettingsWindow
+from .settings_manager import SettingsManager
 
 
 class SettingsMenu(QMenu):
-    def __init__(self, settings_manager, parent=None):
-        super(SettingsMenu, self).__init__('Settings', parent)
+    def __init__(self, settings_manager: SettingsManager, parent=None):
+        super().__init__(parent)
         self.settings_manager = settings_manager
 
-        self.showSettingsAction = QAction('Show settings', self)
-        self.showSettingsAction.triggered.connect(self.show_settings)
-        self.addAction(self.showSettingsAction)
+        self.settings_action = QAction("Settings", self)
+        self.settings_action.triggered.connect(self.open_settings_window)
+        self.addAction(self.settings_action)
 
         self.toggleModeAction = QAction('Toggle light/dark mode', self)
         self.toggleModeAction.triggered.connect(
-            self.settings_manager.user_settings.toggle_mode)
+            self.settings_manager.theme_manager.toggle_mode)
         self.addAction(self.toggleModeAction)
 
         self.changeLanguageAction = QAction('Change language', self)
@@ -28,6 +31,12 @@ class SettingsMenu(QMenu):
         # self.changeFontAction.triggered.connect(self.settings_manager.font_manager.change_font)
         self.addAction(self.changeFontAction)
 
-    def show_settings(self):
-        settings_window = SettingsWindow(self.settings_manager, self.parent())
-        settings_window.exec_()
+    def open_settings_window(self):
+        self.settings_window = SettingsWindow(self.settings_manager, self)
+        self.settings_window.show()
+        
+    def exec_(self, point=None):
+        if point is None:
+            super().popup(QCursor.pos())
+        else:
+            super().popup(point)

@@ -1,16 +1,15 @@
 import json
 import os
 import darkdetect
+import datetime
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import qApp
 
 
 class UserSettings:
-    def __init__(self, parent, settings_file='settings.json'):
-        self.parent = parent
+    def __init__(self, settings_file='settings.json'):
         self.settings_file = settings_file
         self.settings = self.load_settings()
-        self.toggle_mode()
         
     def load_settings(self):
         if os.path.exists(self.settings_file):
@@ -33,7 +32,7 @@ class UserSettings:
         return {
             'font': 'Arial',
             'change_application_font': False,
-            'mode': 'dark' if darkdetect.isLight() else 'light',
+            'mode': 'light' # change this
         }
 
     def get_settings(self):
@@ -46,23 +45,5 @@ class UserSettings:
     def toggle_application_font(self):
         self.settings['change_application_font'] = not self.settings['change_application_font']
         self.save_settings()
-
-    def toggle_mode(self):
-        self.settings['mode'] = 'dark' if self.settings['mode'] == 'light' else 'light'
-        self.save_settings()
-        self.load_stylesheet()
-
-    def change_language(self, language):
-        self.settings['language'] = language
-        self.save_settings()
-        
-    def load_stylesheet(self):
-        if self.settings['mode'] == 'light':
-            with open('src/styles/light.qss', 'r') as f:
-                stylesheet = f.read()
-        else:
-            with open('src/styles/dark.qss', 'r') as f:
-                stylesheet = f.read()
-        qApp.setStyleSheet(stylesheet)
 
 

@@ -36,7 +36,8 @@ class SettingsWindow(QDialog):
 
         self.font_combo_box = QFontComboBox()
         self.font_combo_box.setCurrentFont(QFont(self.settings_manager.user_settings.settings['font']))
-        self.font_combo_box.setMinimumWidth(300)  # Set the minimum width
+        self.font_combo_box.setMinimumHeight(50)
+        self.font_combo_box.setMinimumWidth(300)
         self.font_combo_box.currentFontChanged.connect(self.settings_manager.font_manager.change_font)
         layout.addWidget(self.font_combo_box)
 
