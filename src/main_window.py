@@ -1,6 +1,9 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QTextEdit, QLabel, QComboBox
 from PyQt5.QtGui import QFont, QScreen
 from PyQt5.QtCore import Qt
+
+from .settings.settings_window import SettingsWindow
+from .settings.settings_manager import SettingsManager
 from .settings.settings_menu import SettingsMenu
 from .readability_index import READABILITY_INDICES
 
@@ -51,9 +54,11 @@ class MainWindow(QMainWindow):
             "QLabel { font-size: 22px; margin-top: 15px; }")
         self.layout.addWidget(self.result_label)
 
-        self.settings_menu = SettingsMenu(self)
+        self.settings_manager = SettingsManager(self)
+        
+        self.settings_menu = SettingsMenu(self.settings_manager, self)
         self.menuBar().addMenu(self.settings_menu)
-
+        
         self.populate_combo_box()
 
     def populate_combo_box(self):
@@ -65,6 +70,10 @@ class MainWindow(QMainWindow):
     def combo_box_changed(self, index):
         self.index_description_label.setText(
             READABILITY_INDICES[index].description)
+        
+    def show_settings_window(self):
+        self.settings_window = SettingsWindow(self.settings_manager, self)
+        self.settings_window.show()
 
     def display_scores(self):
         text = self.text_edit.toPlainText().strip()
