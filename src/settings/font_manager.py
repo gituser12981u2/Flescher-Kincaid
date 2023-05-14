@@ -23,11 +23,7 @@ class FontManager:
         current_font = QFont()
         current_font.fromString(self.user_settings.settings['font'])
         
-        print(f"Old font size: {current_font.pointSize()}")  # Debugging line
-    
         font.setPointSize(current_font.pointSize())  # Preserving old font size
-        
-        print(f"New font size: {font.pointSize()}")  # Debugging line
 
         self.user_settings.settings['font'] = font.toString()
         self.user_settings.save_settings()

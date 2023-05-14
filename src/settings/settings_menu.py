@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QMenu, QAction
+from PyQt5.QtWidgets import QMenu, QAction, QApplication
 from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtGui import QCursor
+from PyQt5.QtGui import QCursor, QScreen
 
 from .settings_window import SettingsWindow
 from .settings_manager import SettingsManager
@@ -33,6 +33,12 @@ class SettingsMenu(QMenu):
 
     def open_settings_window(self):
         self.settings_window = SettingsWindow(self.settings_manager, self)
+        
+        # Position the window at the center of the screen
+        screen_geometry = QScreen.availableGeometry(QApplication.primaryScreen())
+        x = self.frameGeometry().center().x() - self.geometry().width() / 2
+        y = self.frameGeometry().center().y() - self.geometry().height() / 2
+        self.settings_window.move(int(x), int(y))
         self.settings_window.show()
         
     def exec_(self, point=None):

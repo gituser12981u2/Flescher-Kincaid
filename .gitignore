@@ -1,2 +1,6 @@
 \__pycache__
 settings.json
+.vscode/task.json
+settings.json
+utils/.bumpversion.cfg
+utils/version.py
