@@ -1,12 +1,12 @@
 {
-    "version": "0.2.0",
-    "configurations:": [
-        {
-            "name": "Run Main",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/src/main.py",
-            "console": "integratedTerminal"
-        }
-    ]
+    "configurations": [        
+    {
+        "name": "Python - Custom Run",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "preLaunchTask": "python -m src.main"
+    }
+    ],
 }
